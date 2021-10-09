@@ -20,6 +20,12 @@ def aware(request):
             elif('placement' in want and 'job' not in want and 'skill' not in want):
                 all_page='placement'
                 return redirect('all')
+            elif('job' in want and 'placement' not in want and 'skill' not in want):
+                all_page='job'
+                return redirect('all')
+            elif('skill' in want and 'placement' not in want and 'job' not in want):
+                all_page='skill'
+                return redirect('all')            
             return redirect('index')
     
     context={'form':form}

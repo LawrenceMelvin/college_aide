@@ -1,4 +1,32 @@
 {% extends "awareness/base.html" %}
 {% block content %}
-    <h1>All the details in this page</h1>
+    <style>
+        .all_box{
+            border: 2px solid black;
+            font-size: large;
+            margin: 10px;
+            display: inline;
+        }
+        a{
+            text-decoration: none;
+            font-size: larger;
+            padding: 40px;
+            text-align: center;
+
+        }
+        .total_box{
+            align-items: center;
+        }
+    </style>
+    <div class="container total_box">
+    <div class="all_box">
+        <a href="{% url 'placement' %}">Placement</a>
+    </div>
+    <div class="all_box">
+        <a href="{% url 'code' %}">Code</a>
+    </div>
+    <div class="all_box">
+        <a href="{% url 'job' %}">Job</a>
+    </div>
+    </div>
 {% endblock %}
