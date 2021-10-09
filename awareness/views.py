@@ -14,17 +14,20 @@ def aware(request):
             person = form.cleaned_data['person']
             want = form.cleaned_data['wanted']
             print(want)
-            if('placement' in want and 'job' in want and 'skill' in want):
+            if('placement' in want and 'job' in want and 'skill' in want and 'english' in want):
                 all_page = 'all'
                 return redirect('all')
-            elif('placement' in want and 'job' not in want and 'skill' not in want):
+            elif('placement' in want and 'job' not in want and 'skill' not in want and 'english' not in want):
                 all_page='placement'
                 return redirect('all')
-            elif('job' in want and 'placement' not in want and 'skill' not in want):
+            elif('job' in want and 'placement' not in want and 'skill' not in want and 'english' not in want):
                 all_page='job'
                 return redirect('all')
-            elif('skill' in want and 'placement' not in want and 'job' not in want):
+            elif('skill' in want and 'placement' not in want and 'job' not in want and 'english' not in want):
                 all_page='skill'
+                return redirect('all')
+            elif('english' in want):
+                all_page='english'
                 return redirect('all')            
             return redirect('index')
     
@@ -32,11 +35,14 @@ def aware(request):
     return render(request,'awareness/aware.html',context)
 
 def all(request):
+
     if(all_page == 'all'):
         return render(request,'awareness/all.html')
     elif(all_page == 'placement'):
         return render(request,'awareness/placement.html')
     elif(all_page=='job'):
         return render(request,'awareness/job.html')
-    else:
+    elif(all_page=='english'):
+        return render(request,'awareness/english.html')
+    elif(all_page=='skill'):
         return render(request,'awareness/code.html')
