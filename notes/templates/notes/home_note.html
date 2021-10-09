@@ -1,11 +1,21 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Aide</title>
-</head>
-<body>
-    <h1>Notes App</h1>
-</body>
-</html>
+{% extends "notes/base.html" %}
+{% block content %}
+  <div>
+    {% for message in messages %}
+      <b>{{message}}</b>
+    {% endfor %}
+  </div>
+  <div class="container">
+  {% for note in notes %}
+      <form action="note/del/{{note.id}}" method="POST">
+        {% csrf_token %}
+       <input class="btn btn-danger" type="submit" name="Delete" value="Delete" style="float:right">
+      </form>
+        <h4>{{note.title}}-{{note.note_date|date:"F d Y"}}</h4>
+        <p>{{note.notes}}</p>
+  {% endfor %}
+  <p>
+  <a class="btn btn-warning" href="{% url 'add' %}" role="button">Notes</a>
+  </p>
+  </div>
+{% endblock %}
